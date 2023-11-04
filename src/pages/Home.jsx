@@ -1,5 +1,5 @@
 import React from 'react'
-import './Home.css'
+import '../styles/Home.css'
 import BankLogo from '../assets/argentBankLogo.png'
 import IconChat from '../assets/icon-chat.png'
 import IconMoney from '../assets/icon-money.png'
