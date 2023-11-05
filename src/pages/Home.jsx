@@ -5,11 +5,11 @@ import IconChat from '../assets/icon-chat.png'
 import IconMoney from '../assets/icon-money.png'
 import IconSecurity from '../assets/icon-security.png'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 
 export default function Home() {
   return (
     <>
+    <Header OnUserPage = 'false' />
     <main>
       <div className="hero">
         <section className="hero-content">
