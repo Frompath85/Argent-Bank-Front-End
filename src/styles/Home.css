@@ -4,6 +4,7 @@
   
   .bg-dark {
     background-color: #12002b;
+    padding: 3rem 0rem 7rem 0rem;
   }
   
   .sr-only {
@@ -155,7 +156,7 @@
     background-color: white;
     width: 300px;
     margin: 0 auto;
-    margin-top: 3rem;
+
     padding: 2rem;
   }
   
