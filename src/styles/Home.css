@@ -6,6 +6,10 @@
     background-color: #12002b;
     padding: 3rem 0rem 7rem 0rem;
   }
+  .bg-dark-user {
+    background-color: #12002b;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+  }
   
   .sr-only {
     border: 0 !important;
