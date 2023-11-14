@@ -3,37 +3,38 @@ import '../styles/Home.css'
 import BankLogo from '../assets/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 export default function Header(props) {
   // console.log(props.OnUserPage)
   return (
     <nav className="main-nav"> 
-      <a className="main-nav-logo" href="./index.html">
+    <Link className="main-nav-logo" to={"/"}>
         <img
           className="main-nav-logo-image"
           src={BankLogo}
           alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>
-      </a>
+    </Link>
      {
-     props.OnUserPage =='false' ? 
+     props.OnUserPage =='false' ?
       <div>
-          <a className="main-nav-item" href="./sign-in.html">
+        <Link className="main-nav-item" to={"/Login"}>
           <FontAwesomeIcon icon={faCircleUser} />
           <span>   Sign In</span>
-          </a>
+        </Link>
       </div> 
       :  
       <div>
-          <a className="main-nav-item" href="./sign-in.html">
+        <Link className="main-nav-item" to={"/"}>
           <FontAwesomeIcon icon={faCircleUser} />
           <span>   UserName</span>
-          </a>
-          <a className="main-nav-item" href="./sign-in.html">
+        </Link>  
+        <Link className="main-nav-item" to={"/Login"}>  
           <FontAwesomeIcon icon={faRightFromBracket} />
           <span>   Sign Out</span>
-          </a>
+        </Link>  
       </div>
      }
     </nav>

@@ -2,17 +2,16 @@ import React from 'react'
 import "../styles/Home.css"
 import Header from '../components/Header'
 import { GetUserData } from '../services/services'
-import {useState} from 'react'
 
 
-export default function User() {
+export default   function User() {
 
   async function getdata(){
     const data = await GetUserData()
-    console.log(data)
+     console.log(data)
      return data
   }
-  getdata()  
+ getdata()
 
   return (
     <>

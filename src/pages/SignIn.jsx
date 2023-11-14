@@ -8,8 +8,8 @@ export default function SignIn() {
     <>
     <Header OnUserPage = 'false'/>
     <main class="main bg-dark">
-    <SignInForm />
-  </main>
+      <SignInForm />
+    </main>
   </>
   )
 }
