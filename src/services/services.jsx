@@ -2,8 +2,8 @@
 
 export async function GetToken(entredEmail,entredPassword){
     const url = 'http://localhost:3001/api/v1/user/login';
- 
-    const logindata = await fetch(url, {
+    
+        const response = await fetch(url, {
             method : 'POST',
             body :JSON.stringify({
                 email : entredEmail,
@@ -13,30 +13,29 @@ export async function GetToken(entredEmail,entredPassword){
                 'Content-Type':"application/json",
             }
         })
-        .then((response)=> response.json())
-        console.log(logindata)            
-        if(logindata.status == 200){
-            let token = logindata.body.token
-            localStorage.setItem("token", token)
+        const data = await response.json()
+        console.log(data)            
+        if(data.status == 200){
+            const token = data.body.token
             return token
         }         
         else 
-          alert(logindata.message)
+          alert(data.message)
 } 
 
-export async function GetUserData(){
+export async function GetUserData(token){
    
     const url = 'http://localhost:3001/api/v1/user/profile';
-    let token = localStorage.getItem("token")
-    console.log(token)
 
-    const userdata = await  fetch(url, {
+    const response = await  fetch(url, {
       method : 'POST',
       headers:{
           'Content-Type':"application/json",
           Authorization: `Bearer ${token}`,
       }
     })
-    .then((response)=> response.json())
-     return userdata
+    const data = await response.json()
+    console.log("données utilisateur :")
+    console.log(data)
+     return data
 }
