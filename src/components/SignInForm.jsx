@@ -26,14 +26,13 @@ export default  function  SignInForm() {
       event.preventDefault();
       const tokenValue =  await GetToken(username,password)
       console.log(tokenValue)
+      // tester si la valeur du token alors se rediriger vers le profil
         if(tokenValue){
           dispatch(setToken( tokenValue ))
           navigate('/User')
         }
         else console.log("token abscent")
-     
-      // tester si la valeur du token alors se rediriger vers le profil
-      // if(token !== 0 || loginStatus === 200 || token === localStorage.getItem("token")) return <Navigate to="/profil" /> 
+    
     }
 
   return (
@@ -53,7 +52,6 @@ export default  function  SignInForm() {
         <input type="checkbox" id="remember-me" />
         <label for="remember-me">Remember me </label >
       </div>
-  
       {/* <button class="sign-in-button"  onClick={ TokendData? navigate('/User'): SubmitHundler}>Sign In</button>  */}
       <button class="sign-in-button"  onClick={SubmitHundler}>Sign In</button> 
     

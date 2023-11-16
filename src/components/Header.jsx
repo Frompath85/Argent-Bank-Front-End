@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 
 export default function Header(props) {
-  // console.log(props.OnUserPage)
 
   return (
     <nav className="main-nav"> 
