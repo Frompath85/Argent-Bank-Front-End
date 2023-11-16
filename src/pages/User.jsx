@@ -2,23 +2,39 @@ import React from 'react'
 import "../styles/Home.css"
 import Header from '../components/Header'
 import { GetUserData } from '../services/services'
+import {useDispatch, useSelector} from 'react-redux'
+import { setEmail, setFirstName, setLastName } from '../features/dataReducer' 
+import { Navigate } from 'react-router-dom'
 
 
 export default   function User() {
+  const dispatch = useDispatch(); 
 
-  async function getdata(){
-    const data = await GetUserData()
-     console.log(data)
-     return data
-  }
- getdata()
+  const token = useSelector(state => state.data.token)
+  console.log(token)
+  if(token == "") return <Navigate to="/login" />
+
+  const UserData = GetUserData(token);
+  UserData.then(user => {
+    dispatch(setEmail(user.body.email));
+    dispatch(setFirstName(user.body.firstName));
+    dispatch(setLastName(user.body.lastName));
+});
+
+const email = useSelector(state => state.data.email)
+console.log(email)
+const firstname = useSelector(state => state.data.firstName)
+console.log(firstname)
+const lastname = useSelector(state => state.data.lastName)
+console.log(lastname)
 
   return (
     <>
-    <Header OnUserPage = 'true'/>
+    <Header OnUserPage = 'true' UserName = {firstname}/>
+    {/* //Tony first name */}
     <main class="main bg-dark-user">
     <div class="header">
-      <h1>Welcome back<br />Tony Jarvis!</h1>
+      <h1>Welcome back<br /> {firstname} {lastname} </h1>
       <button class="edit-button">Edit Name</button>
     </div>
     <h2 class="sr-only">Accounts</h2>
