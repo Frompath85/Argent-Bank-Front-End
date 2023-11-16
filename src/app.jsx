@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import User from './pages/User';
 import {store } from './store.js'
 import { Provider } from 'react-redux'
+import SignOut from './pages/SignOut.jsx';
 
 {/* */}
 
@@ -19,6 +20,7 @@ export function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/Login" element ={<SignIn />} />
                   <Route path="/User" element ={<User />} />
+                  <Route path="/LogOut" element ={<SignOut />} />
               </Routes>
           </Router>
         <Footer />
