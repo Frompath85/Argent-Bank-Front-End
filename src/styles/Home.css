@@ -279,4 +279,38 @@
       width: 200px;
     }
   }
+
+  /* Edit profil section */
+  #edit-section{
+    display: none;
+  }
+  #edit-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+  }
+  .input-section{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .button-section{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .edit-profil-input{
+    width: 200px;
+    padding: 5px;
+    border-color: grey;
+    border-radius: 5px;
+  }
+  .edit-profil-button{
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: purple;
+    color: purple;
+  }
   
