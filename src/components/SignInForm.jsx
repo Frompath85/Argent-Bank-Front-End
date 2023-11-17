@@ -5,16 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSignIn } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import { GetToken } from '../services/services'
-//pour utiliser le store dans un compsant il faut utiliser le hook UseSelector et UseDispath
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { setToken } from '../features/dataReducer' 
-
 
 export default  function  SignInForm() {
 
-    const dispatch = useDispatch();
-    const statetoken = useSelector(state => state.data.token)
-    console.log(statetoken)
+    const dispatch = useDispatch()
 
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
@@ -22,17 +18,15 @@ export default  function  SignInForm() {
 
     const navigate = useNavigate() 
 
-    const SubmitHundler = async (event) =>{
+    const SubmitHandler = async (event) =>{
       event.preventDefault();
       const tokenValue =  await GetToken(username,password)
-      console.log(tokenValue)
       // tester si la valeur du token alors se rediriger vers le profil
         if(tokenValue){
           dispatch(setToken( tokenValue ))
-          navigate('/User')
+          navigate('/Profile')
         }
-        else console.log("token abscent")
-    
+        else console.log("token abcsent")
     }
 
   return (
@@ -48,12 +42,12 @@ export default  function  SignInForm() {
         <label for="password">Password</label>
         <input type="password" id="password" onChange={e => setPassword(e.target.value)}/>
       </div>
-      <div class="input-remember">
+      {/* <div class="input-remember">
         <input type="checkbox" id="remember-me" />
         <label for="remember-me">Remember me </label >
-      </div>
+      </div> redux persist */}
       {/* <button class="sign-in-button"  onClick={ TokendData? navigate('/User'): SubmitHundler}>Sign In</button>  */}
-      <button class="sign-in-button"  onClick={SubmitHundler}>Sign In</button> 
+      <button class="sign-in-button"  onClick={SubmitHandler}>Sign In</button> 
     
     </form>
   </section>
