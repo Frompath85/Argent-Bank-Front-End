@@ -9,7 +9,7 @@ import Header from '../components/Header'
 export default function Home() {
   return (
     <>
-    <Header OnUserPage = 'false' />
+    <Header/>
     <main>
       <div className="hero">
         <section className="hero-content">
