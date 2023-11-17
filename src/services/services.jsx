@@ -1,5 +1,4 @@
 
-
 export async function GetToken(entredEmail,entredPassword){
     const url = 'http://localhost:3001/api/v1/user/login';
     
@@ -35,7 +34,26 @@ export async function GetUserData(token){
       }
     })
     const data = await response.json()
-    console.log("données utilisateur :")
+    console.log(data)
+     return data
+}
+
+export async function SaveProfilData(token, NewFirstName, NewLastName){
+   
+    const url = 'http://localhost:3001/api/v1/user/profile';
+
+    const response = await  fetch(url, {
+      method : 'PUT',
+      headers:{
+          'Content-Type':"application/json",
+          Authorization: `Bearer ${token}`,
+      },
+      body :JSON.stringify({
+        firstName : NewFirstName,
+        lastName : NewLastName,
+    }),
+    })
+    const data = await response.json()
     console.log(data)
      return data
 }
