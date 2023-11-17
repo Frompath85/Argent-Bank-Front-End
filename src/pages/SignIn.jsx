@@ -6,7 +6,7 @@ import SignInForm from '../components/SignInForm'
 export default function SignIn() {
   return (
     <>
-    <Header OnUserPage = 'false'/>
+    <Header/>
     <main class="main bg-dark">
       <SignInForm />
     </main>
