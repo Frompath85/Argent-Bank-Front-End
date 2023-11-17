@@ -20,8 +20,14 @@ export const dataSlice = createSlice({
         },
         setLastName: (state, action)=>{
             state.lastName = action.payload
+        },
+        SetSignOut:(state )=>{
+            state.token= null
+            state.email = null
+            state.firstName = null
+            state.lastName = null
         }
     }
 })
-export const {setToken, setEmail, setFirstName, setLastName} = dataSlice.actions
+export const {setToken, setEmail, setFirstName, setLastName, SetSignOut} = dataSlice.actions
 export default dataSlice.reducer;
