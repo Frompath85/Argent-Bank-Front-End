@@ -13,7 +13,7 @@ export async function GetToken(entredEmail,entredPassword){
             }
         })
         const data = await response.json()
-        console.log(data)            
+        // console.log(data)            
         if(data.status == 200){
             const token = data.body.token
             return token
@@ -34,7 +34,7 @@ export async function GetUserData(token){
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
      return data
 }
 
@@ -54,6 +54,6 @@ export async function SaveProfilData(token, NewFirstName, NewLastName){
     }),
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
      return data
 }

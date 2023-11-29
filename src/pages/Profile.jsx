@@ -5,32 +5,29 @@ import { GetUserData } from '../services/services'
 import { useDispatch, useSelector} from 'react-redux'
 import { setFirstName, setLastName, setEmail} from '../features/dataReducer' 
 import { Navigate } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useRef } from "react"
 import { SaveProfilData } from '../services/services'
 
 
 export default   function Profile() {
 
   const dispatch = useDispatch(); 
+  const firstname = useSelector(state => state.data.firstName)
+  const lastname = useSelector(state => state.data.lastName)
 
-  const[NewFirstName, setNewFirstName]= useState("")
-  const[NewLastName, setNewLastName]= useState("")
+  const NewFN = useRef()
+  const NewLN= useRef()
 
   const token = useSelector(state => state.data.token)
-  console.log(token)
+  // console.log(token)
   if(token == "") return <Navigate to="/login" />
 
-  // useEffect(() => {
   const UserData = GetUserData(token);
     UserData.then(user => {
       dispatch(setEmail(user.body.email));
       dispatch(setFirstName(user.body.firstName));
       dispatch(setLastName(user.body.lastName));
   });
-  // })
- 
-const firstname = useSelector(state => state.data.firstName)
-const lastname = useSelector(state => state.data.lastName)
 
 const EditProfil = ()=>{
   document.getElementById("edit-section").style.display = "block";
@@ -39,15 +36,14 @@ const EditProfil = ()=>{
   // document.querySelector('.bg-dark-user').style.background = "#dfe6ed";
 }
 const SaveProfil = ()=>{
-  if(NewFirstName && NewLastName){
-      dispatch(setFirstName(NewFirstName));
-      dispatch(setLastName(NewLastName));
-      SaveProfilData(token, NewFirstName, NewLastName)
-      CancelProfil()
-  }else{
-    setNewFirstName(firstname)
-    setNewLastName(lastname)
-  }
+    const NewFirstName = NewFN.current.value.trim()
+    const NewLastName = NewLN.current.value.trim()
+    console.log(NewFirstName, NewLastName)
+
+    dispatch(setFirstName(NewFirstName));
+    dispatch(setLastName(NewLastName));
+    SaveProfilData(token, NewFirstName, NewLastName)
+    CancelProfil()
 }
 const CancelProfil = ()=>{
   document.getElementById("edit-section").style.display = "none";
@@ -67,8 +63,12 @@ const CancelProfil = ()=>{
     <div id='edit-section'>
       <div id='edit-form'>
         <div className='input-section'>
-           <input placeholder = {firstname} className='edit-profil-input' type="text" id='firstName' onChange={e => setNewFirstName(e.target.value)}/> 
-           <input placeholder = {lastname} className='edit-profil-input' type="text" id='lastName' onChange={e => setNewLastName(e.target.value)}/>
+           {/* <input placeholder = {firstname} defaultValue={firstname} className='edit-profil-input' type="text" id='firstName' onChange={e => setNewFirstName(e.target.value)}/> 
+           <input placeholder = {lastname} defaultValue={lastname} className='edit-profil-input' type="text" id='lastName' onChange={e => setNewLastName(e.target.value)}/>
+         */}
+          <input ref ={NewFN} defaultValue={firstname} className='edit-profil-input' type="text" id='firstName' /> 
+          <input ref ={NewLN} defaultValue={lastname} className='edit-profil-input' type="text" id='lastName' />
+       
         </div>
         <div className='button-section'>
           <button className='edit-profil-button' onClick={SaveProfil}>Save</button>
