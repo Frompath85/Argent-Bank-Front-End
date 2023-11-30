@@ -18,8 +18,10 @@ export async function GetToken(entredEmail,entredPassword){
             const token = data.body.token
             return token
         }         
+        else if(data.message == "Error: Password is invalid")
+           document.querySelector('.MsgErrorPass').style.display = "block"
         else 
-          alert(data.message)
+            document.querySelector('.MsgErrorName').style.display = "block"        
 } 
 
 export async function GetUserData(token){
