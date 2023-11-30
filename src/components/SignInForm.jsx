@@ -14,7 +14,6 @@ export default  function  SignInForm() {
 
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    // console.log(username, password);
 
     const navigate = useNavigate() 
 
@@ -36,19 +35,26 @@ export default  function  SignInForm() {
     <form >
       <div class="input-wrapper">
         <label for="username">Username</label>
-        <input type="text" id="username" onChange={e => setUserName(e.target.value)}/>
+        <input type="text" id="username" onChange={e => {
+          document.querySelector('.MsgErrorName').style.display = "none"
+          setUserName(e.target.value)
+        } }/>
+        <p className='MsgErrorName'>User not found !</p>
       </div>
       <div class="input-wrapper">
         <label for="password">Password</label>
-        <input type="password" id="password" onChange={e => setPassword(e.target.value)}/>
+        <input type="password" id="password" onChange={e => {
+          setPassword(e.target.value)
+          document.querySelector('.MsgErrorPass').style.display = "none"
+        } }/>
+        <p className='MsgErrorPass'> Password is invalid</p>
       </div>
       {/* <div class="input-remember">
         <input type="checkbox" id="remember-me" />
         <label for="remember-me">Remember me </label >
       </div> redux persist */}
-      {/* <button class="sign-in-button"  onClick={ TokendData? navigate('/User'): SubmitHundler}>Sign In</button>  */}
+
       <button class="sign-in-button"  onClick={SubmitHandler}>Sign In</button> 
-    
     </form>
   </section>
   )
