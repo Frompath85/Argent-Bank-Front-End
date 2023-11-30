@@ -329,4 +329,8 @@
     font-weight: bold;
     font-size: 14px;
   }
-  
+  .MsgErrorName, .MsgErrorPass{
+    color: red;
+    margin: 0px;
+    display: none;
+  }
