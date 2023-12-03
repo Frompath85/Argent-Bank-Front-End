@@ -25,8 +25,7 @@ export default  function  SignInForm() {
           dispatch(setToken( tokenValue ))
           navigate('/Profile')
         }
-        else console.log("token abcsent")
-    }
+   }
 
   return (
     <section class="sign-in-content">
