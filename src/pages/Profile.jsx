@@ -39,11 +39,15 @@ const SaveProfil = ()=>{
     const NewFirstName = NewFN.current.value.trim()
     const NewLastName = NewLN.current.value.trim()
     console.log(NewFirstName, NewLastName)
-
-    dispatch(setFirstName(NewFirstName));
+    if(NewFirstName ==""|| NewLastName =="")
+    console.log("vous devez saisir les informations manquants")
+  else{
+     dispatch(setFirstName(NewFirstName));
     dispatch(setLastName(NewLastName));
     SaveProfilData(token, NewFirstName, NewLastName)
     CancelProfil()
+  }
+   
 }
 const CancelProfil = ()=>{
   document.getElementById("edit-section").style.display = "none";
